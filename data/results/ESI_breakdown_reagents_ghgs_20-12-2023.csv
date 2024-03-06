@@ -1,0 +1,406 @@
+Metal,Stage,Reagent,Value
+"Lithium, brine",Mining,"neutralising agent, sodium hydroxide-equivalent",0.0
+"Lithium, brine",Mining,"hydrochloric acid, without water, in 30% solution state",0.0
+"Lithium, brine",Mining,"soda ash, light",0.0
+"Lithium, brine",Mining,"quicklime, milled, packed",0.0
+"Lithium, brine",Mining,kerosene,0.0
+"Lithium, brine",Mining,sulfuric acid,0.0
+"Lithium, brine",Mining,"sodium hydroxide, without water, in 50% solution state",0.0
+"Lithium, brine",Mining,"quicklime, milled, loose",0.0
+"Lithium, brine",Mining,"hydrogen peroxide, without water, in 50% solution state",0.0
+"Lithium, brine",Mining,"carbon dioxide, liquid",0.0
+"Lithium, brine",Mining,bentonite,0.0
+"Lithium, brine",Mining,sulfur,0.0
+"Lithium, brine",Mining,magnesium oxide,0.0
+"Lithium, brine",Mining,"limestone, crushed, for mill",0.0
+"Lithium, brine",Mining,"lime, hydraulic",0.0
+"Lithium, brine",Mining,"soda ash, dense",0.0
+"Lithium, brine",Mining,ammonium bicarbonate,0.0
+"Lithium, brine",Mining,lime,0.0
+"Lithium, brine",Mining,"limestone, crushed, washed",0.0
+"Lithium, brine",Mining,disodium disulphite,0.0
+"Lithium, brine",Mining,diesel,0.0
+"Lithium, brine",Mining,"nitric acid, without water, in 50% solution state",0.0
+"Lithium, brine",Mining,hydrogen fluoride,0.0
+"Lithium, brine",Mining,pitch,0.0
+"Lithium, brine",Mining,"nitrogen, liquid",0.0
+"Lithium, brine",Mining,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+"Lithium, brine",Mining,iron sulfate,0.0
+"Lithium, brine",Concentration,"neutralising agent, sodium hydroxide-equivalent",0.07107254338921597
+"Lithium, brine",Concentration,"hydrochloric acid, without water, in 30% solution state",0.08539591076719169
+"Lithium, brine",Concentration,"soda ash, light",0.13040842088355026
+"Lithium, brine",Concentration,"quicklime, milled, packed",0.050341984710898346
+"Lithium, brine",Concentration,kerosene,0.14924948976176913
+"Lithium, brine",Concentration,sulfuric acid,0.0
+"Lithium, brine",Concentration,"sodium hydroxide, without water, in 50% solution state",0.0
+"Lithium, brine",Concentration,"quicklime, milled, loose",0.0
+"Lithium, brine",Concentration,"hydrogen peroxide, without water, in 50% solution state",0.0
+"Lithium, brine",Concentration,"carbon dioxide, liquid",0.0
+"Lithium, brine",Concentration,bentonite,0.0
+"Lithium, brine",Concentration,sulfur,0.0
+"Lithium, brine",Concentration,magnesium oxide,0.0
+"Lithium, brine",Concentration,"limestone, crushed, for mill",0.0
+"Lithium, brine",Concentration,"lime, hydraulic",0.0
+"Lithium, brine",Concentration,"soda ash, dense",0.0
+"Lithium, brine",Concentration,ammonium bicarbonate,0.0
+"Lithium, brine",Concentration,lime,0.0
+"Lithium, brine",Concentration,"limestone, crushed, washed",0.0
+"Lithium, brine",Concentration,disodium disulphite,0.0
+"Lithium, brine",Concentration,diesel,0.0
+"Lithium, brine",Concentration,"nitric acid, without water, in 50% solution state",0.0
+"Lithium, brine",Concentration,hydrogen fluoride,0.0
+"Lithium, brine",Concentration,pitch,0.0
+"Lithium, brine",Concentration,"nitrogen, liquid",0.0
+"Lithium, brine",Concentration,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+"Lithium, brine",Concentration,iron sulfate,0.0
+"Lithium, brine",Refining,"neutralising agent, sodium hydroxide-equivalent",0.0
+"Lithium, brine",Refining,"hydrochloric acid, without water, in 30% solution state",0.0
+"Lithium, brine",Refining,"soda ash, light",0.9102714831345842
+"Lithium, brine",Refining,"quicklime, milled, packed",0.0
+"Lithium, brine",Refining,kerosene,0.0
+"Lithium, brine",Refining,sulfuric acid,0.0
+"Lithium, brine",Refining,"sodium hydroxide, without water, in 50% solution state",0.0
+"Lithium, brine",Refining,"quicklime, milled, loose",0.0
+"Lithium, brine",Refining,"hydrogen peroxide, without water, in 50% solution state",0.0
+"Lithium, brine",Refining,"carbon dioxide, liquid",0.0
+"Lithium, brine",Refining,bentonite,0.0
+"Lithium, brine",Refining,sulfur,0.0
+"Lithium, brine",Refining,magnesium oxide,0.0
+"Lithium, brine",Refining,"limestone, crushed, for mill",0.0
+"Lithium, brine",Refining,"lime, hydraulic",0.0
+"Lithium, brine",Refining,"soda ash, dense",0.0
+"Lithium, brine",Refining,ammonium bicarbonate,0.0
+"Lithium, brine",Refining,lime,0.0
+"Lithium, brine",Refining,"limestone, crushed, washed",0.0
+"Lithium, brine",Refining,disodium disulphite,0.0
+"Lithium, brine",Refining,diesel,0.0
+"Lithium, brine",Refining,"nitric acid, without water, in 50% solution state",0.0
+"Lithium, brine",Refining,hydrogen fluoride,0.0
+"Lithium, brine",Refining,pitch,0.0
+"Lithium, brine",Refining,"nitrogen, liquid",0.0
+"Lithium, brine",Refining,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+"Lithium, brine",Refining,iron sulfate,0.0
+Cobalt,Mining,"neutralising agent, sodium hydroxide-equivalent",0.0
+Cobalt,Mining,"hydrochloric acid, without water, in 30% solution state",0.0
+Cobalt,Mining,"soda ash, light",0.0
+Cobalt,Mining,"quicklime, milled, packed",0.0
+Cobalt,Mining,kerosene,0.0
+Cobalt,Mining,sulfuric acid,0.0
+Cobalt,Mining,"sodium hydroxide, without water, in 50% solution state",0.0
+Cobalt,Mining,"quicklime, milled, loose",0.0
+Cobalt,Mining,"hydrogen peroxide, without water, in 50% solution state",0.0
+Cobalt,Mining,"carbon dioxide, liquid",0.0
+Cobalt,Mining,bentonite,0.0
+Cobalt,Mining,sulfur,0.0
+Cobalt,Mining,magnesium oxide,0.0
+Cobalt,Mining,"limestone, crushed, for mill",0.0
+Cobalt,Mining,"lime, hydraulic",0.0
+Cobalt,Mining,"soda ash, dense",0.0
+Cobalt,Mining,ammonium bicarbonate,0.0
+Cobalt,Mining,lime,0.0
+Cobalt,Mining,"limestone, crushed, washed",0.0
+Cobalt,Mining,disodium disulphite,0.0
+Cobalt,Mining,diesel,0.0
+Cobalt,Mining,"nitric acid, without water, in 50% solution state",0.0
+Cobalt,Mining,hydrogen fluoride,0.0
+Cobalt,Mining,pitch,0.0
+Cobalt,Mining,"nitrogen, liquid",0.0
+Cobalt,Mining,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+Cobalt,Mining,iron sulfate,0.0
+Cobalt,Concentration,"neutralising agent, sodium hydroxide-equivalent",0.0
+Cobalt,Concentration,"hydrochloric acid, without water, in 30% solution state",0.0
+Cobalt,Concentration,"soda ash, light",0.0
+Cobalt,Concentration,"quicklime, milled, packed",0.0
+Cobalt,Concentration,kerosene,0.0
+Cobalt,Concentration,sulfuric acid,0.0
+Cobalt,Concentration,"sodium hydroxide, without water, in 50% solution state",0.08867846351125447
+Cobalt,Concentration,"quicklime, milled, loose",0.0
+Cobalt,Concentration,"hydrogen peroxide, without water, in 50% solution state",0.0
+Cobalt,Concentration,"carbon dioxide, liquid",0.0
+Cobalt,Concentration,bentonite,0.0
+Cobalt,Concentration,sulfur,0.22179945096935344
+Cobalt,Concentration,magnesium oxide,0.9371786499744431
+Cobalt,Concentration,"limestone, crushed, for mill",0.004875650793811212
+Cobalt,Concentration,"lime, hydraulic",0.5201345166484083
+Cobalt,Concentration,"soda ash, dense",0.0
+Cobalt,Concentration,ammonium bicarbonate,0.0
+Cobalt,Concentration,lime,0.0
+Cobalt,Concentration,"limestone, crushed, washed",0.0
+Cobalt,Concentration,disodium disulphite,0.0
+Cobalt,Concentration,diesel,0.0
+Cobalt,Concentration,"nitric acid, without water, in 50% solution state",0.0
+Cobalt,Concentration,hydrogen fluoride,0.0
+Cobalt,Concentration,pitch,0.0
+Cobalt,Concentration,"nitrogen, liquid",0.0
+Cobalt,Concentration,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+Cobalt,Concentration,iron sulfate,0.0
+Cobalt,Refining,"neutralising agent, sodium hydroxide-equivalent",0.0
+Cobalt,Refining,"hydrochloric acid, without water, in 30% solution state",0.449926153038944
+Cobalt,Refining,"soda ash, light",0.0
+Cobalt,Refining,"quicklime, milled, packed",0.0
+Cobalt,Refining,kerosene,0.014644313143876321
+Cobalt,Refining,sulfuric acid,0.17319022343372462
+Cobalt,Refining,"sodium hydroxide, without water, in 50% solution state",1.3460739133331598
+Cobalt,Refining,"quicklime, milled, loose",0.0
+Cobalt,Refining,"hydrogen peroxide, without water, in 50% solution state",0.0
+Cobalt,Refining,"carbon dioxide, liquid",0.0
+Cobalt,Refining,bentonite,0.0
+Cobalt,Refining,sulfur,0.0
+Cobalt,Refining,magnesium oxide,0.0
+Cobalt,Refining,"limestone, crushed, for mill",0.0
+Cobalt,Refining,"lime, hydraulic",0.0
+Cobalt,Refining,"soda ash, dense",0.04216899851883258
+Cobalt,Refining,ammonium bicarbonate,0.3683591458197429
+Cobalt,Refining,lime,0.00034679044920911406
+Cobalt,Refining,"limestone, crushed, washed",0.00013409598875130927
+Cobalt,Refining,disodium disulphite,0.042443831992559154
+Cobalt,Refining,diesel,0.0
+Cobalt,Refining,"nitric acid, without water, in 50% solution state",0.0
+Cobalt,Refining,hydrogen fluoride,0.0
+Cobalt,Refining,pitch,0.0
+Cobalt,Refining,"nitrogen, liquid",0.0
+Cobalt,Refining,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+Cobalt,Refining,iron sulfate,0.0
+"Lithium, spodumene",Mining,"neutralising agent, sodium hydroxide-equivalent",0.0
+"Lithium, spodumene",Mining,"hydrochloric acid, without water, in 30% solution state",0.0
+"Lithium, spodumene",Mining,"soda ash, light",0.0
+"Lithium, spodumene",Mining,"quicklime, milled, packed",0.0
+"Lithium, spodumene",Mining,kerosene,0.0
+"Lithium, spodumene",Mining,sulfuric acid,0.0
+"Lithium, spodumene",Mining,"sodium hydroxide, without water, in 50% solution state",0.0
+"Lithium, spodumene",Mining,"quicklime, milled, loose",0.0
+"Lithium, spodumene",Mining,"hydrogen peroxide, without water, in 50% solution state",0.0
+"Lithium, spodumene",Mining,"carbon dioxide, liquid",0.0
+"Lithium, spodumene",Mining,bentonite,0.0
+"Lithium, spodumene",Mining,sulfur,0.0
+"Lithium, spodumene",Mining,magnesium oxide,0.0
+"Lithium, spodumene",Mining,"limestone, crushed, for mill",0.0
+"Lithium, spodumene",Mining,"lime, hydraulic",0.0
+"Lithium, spodumene",Mining,"soda ash, dense",0.0
+"Lithium, spodumene",Mining,ammonium bicarbonate,0.0
+"Lithium, spodumene",Mining,lime,0.0
+"Lithium, spodumene",Mining,"limestone, crushed, washed",0.0
+"Lithium, spodumene",Mining,disodium disulphite,0.0
+"Lithium, spodumene",Mining,diesel,0.0
+"Lithium, spodumene",Mining,"nitric acid, without water, in 50% solution state",0.0
+"Lithium, spodumene",Mining,hydrogen fluoride,0.0
+"Lithium, spodumene",Mining,pitch,0.0
+"Lithium, spodumene",Mining,"nitrogen, liquid",0.0
+"Lithium, spodumene",Mining,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+"Lithium, spodumene",Mining,iron sulfate,0.0
+"Lithium, spodumene",Concentration,"neutralising agent, sodium hydroxide-equivalent",0.0
+"Lithium, spodumene",Concentration,"hydrochloric acid, without water, in 30% solution state",0.0
+"Lithium, spodumene",Concentration,"soda ash, light",0.0
+"Lithium, spodumene",Concentration,"quicklime, milled, packed",0.0
+"Lithium, spodumene",Concentration,kerosene,0.0
+"Lithium, spodumene",Concentration,sulfuric acid,0.0
+"Lithium, spodumene",Concentration,"sodium hydroxide, without water, in 50% solution state",0.0
+"Lithium, spodumene",Concentration,"quicklime, milled, loose",0.0
+"Lithium, spodumene",Concentration,"hydrogen peroxide, without water, in 50% solution state",0.0
+"Lithium, spodumene",Concentration,"carbon dioxide, liquid",0.0
+"Lithium, spodumene",Concentration,bentonite,0.0
+"Lithium, spodumene",Concentration,sulfur,0.0
+"Lithium, spodumene",Concentration,magnesium oxide,0.0
+"Lithium, spodumene",Concentration,"limestone, crushed, for mill",0.0
+"Lithium, spodumene",Concentration,"lime, hydraulic",0.0
+"Lithium, spodumene",Concentration,"soda ash, dense",0.0
+"Lithium, spodumene",Concentration,ammonium bicarbonate,0.0
+"Lithium, spodumene",Concentration,lime,0.0
+"Lithium, spodumene",Concentration,"limestone, crushed, washed",0.0
+"Lithium, spodumene",Concentration,disodium disulphite,0.0
+"Lithium, spodumene",Concentration,diesel,0.0
+"Lithium, spodumene",Concentration,"nitric acid, without water, in 50% solution state",0.0
+"Lithium, spodumene",Concentration,hydrogen fluoride,0.0
+"Lithium, spodumene",Concentration,pitch,0.0
+"Lithium, spodumene",Concentration,"nitrogen, liquid",0.0
+"Lithium, spodumene",Concentration,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+"Lithium, spodumene",Concentration,iron sulfate,0.0
+"Lithium, spodumene",Refining,"neutralising agent, sodium hydroxide-equivalent",0.0
+"Lithium, spodumene",Refining,"hydrochloric acid, without water, in 30% solution state",0.144792810145847
+"Lithium, spodumene",Refining,"soda ash, light",0.9611866996297426
+"Lithium, spodumene",Refining,"quicklime, milled, packed",0.0
+"Lithium, spodumene",Refining,kerosene,0.0
+"Lithium, spodumene",Refining,sulfuric acid,0.5126741725438692
+"Lithium, spodumene",Refining,"sodium hydroxide, without water, in 50% solution state",0.6818965816179371
+"Lithium, spodumene",Refining,"quicklime, milled, loose",0.7488169979623548
+"Lithium, spodumene",Refining,"hydrogen peroxide, without water, in 50% solution state",0.17698882891197834
+"Lithium, spodumene",Refining,"carbon dioxide, liquid",0.0423014549907411
+"Lithium, spodumene",Refining,bentonite,0.00288962554014488
+"Lithium, spodumene",Refining,sulfur,0.0
+"Lithium, spodumene",Refining,magnesium oxide,0.0
+"Lithium, spodumene",Refining,"limestone, crushed, for mill",0.0
+"Lithium, spodumene",Refining,"lime, hydraulic",0.0
+"Lithium, spodumene",Refining,"soda ash, dense",0.0
+"Lithium, spodumene",Refining,ammonium bicarbonate,0.0
+"Lithium, spodumene",Refining,lime,0.0
+"Lithium, spodumene",Refining,"limestone, crushed, washed",0.0
+"Lithium, spodumene",Refining,disodium disulphite,0.0
+"Lithium, spodumene",Refining,diesel,0.0
+"Lithium, spodumene",Refining,"nitric acid, without water, in 50% solution state",0.0
+"Lithium, spodumene",Refining,hydrogen fluoride,0.0
+"Lithium, spodumene",Refining,pitch,0.0
+"Lithium, spodumene",Refining,"nitrogen, liquid",0.0
+"Lithium, spodumene",Refining,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+"Lithium, spodumene",Refining,iron sulfate,0.0
+"Graphite, natural",Mining,"neutralising agent, sodium hydroxide-equivalent",0.0
+"Graphite, natural",Mining,"hydrochloric acid, without water, in 30% solution state",0.0
+"Graphite, natural",Mining,"soda ash, light",0.0
+"Graphite, natural",Mining,"quicklime, milled, packed",0.0
+"Graphite, natural",Mining,kerosene,0.0
+"Graphite, natural",Mining,sulfuric acid,0.0
+"Graphite, natural",Mining,"sodium hydroxide, without water, in 50% solution state",0.0
+"Graphite, natural",Mining,"quicklime, milled, loose",0.0
+"Graphite, natural",Mining,"hydrogen peroxide, without water, in 50% solution state",0.0
+"Graphite, natural",Mining,"carbon dioxide, liquid",0.0
+"Graphite, natural",Mining,bentonite,0.0
+"Graphite, natural",Mining,sulfur,0.0
+"Graphite, natural",Mining,magnesium oxide,0.0
+"Graphite, natural",Mining,"limestone, crushed, for mill",0.0
+"Graphite, natural",Mining,"lime, hydraulic",0.0
+"Graphite, natural",Mining,"soda ash, dense",0.0
+"Graphite, natural",Mining,ammonium bicarbonate,0.0
+"Graphite, natural",Mining,lime,0.0
+"Graphite, natural",Mining,"limestone, crushed, washed",0.0
+"Graphite, natural",Mining,disodium disulphite,0.0
+"Graphite, natural",Mining,diesel,0.0
+"Graphite, natural",Mining,"nitric acid, without water, in 50% solution state",0.0
+"Graphite, natural",Mining,hydrogen fluoride,0.0
+"Graphite, natural",Mining,pitch,0.0
+"Graphite, natural",Mining,"nitrogen, liquid",0.0
+"Graphite, natural",Mining,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+"Graphite, natural",Mining,iron sulfate,0.0
+"Graphite, natural",Concentration,"neutralising agent, sodium hydroxide-equivalent",0.0
+"Graphite, natural",Concentration,"hydrochloric acid, without water, in 30% solution state",0.0
+"Graphite, natural",Concentration,"soda ash, light",0.0
+"Graphite, natural",Concentration,"quicklime, milled, packed",0.0
+"Graphite, natural",Concentration,kerosene,0.0
+"Graphite, natural",Concentration,sulfuric acid,0.0
+"Graphite, natural",Concentration,"sodium hydroxide, without water, in 50% solution state",0.0
+"Graphite, natural",Concentration,"quicklime, milled, loose",0.0
+"Graphite, natural",Concentration,"hydrogen peroxide, without water, in 50% solution state",0.0
+"Graphite, natural",Concentration,"carbon dioxide, liquid",0.0
+"Graphite, natural",Concentration,bentonite,0.0
+"Graphite, natural",Concentration,sulfur,0.0
+"Graphite, natural",Concentration,magnesium oxide,0.0
+"Graphite, natural",Concentration,"limestone, crushed, for mill",0.0
+"Graphite, natural",Concentration,"lime, hydraulic",0.0
+"Graphite, natural",Concentration,"soda ash, dense",0.0
+"Graphite, natural",Concentration,ammonium bicarbonate,0.0
+"Graphite, natural",Concentration,lime,0.0
+"Graphite, natural",Concentration,"limestone, crushed, washed",0.0
+"Graphite, natural",Concentration,disodium disulphite,0.0
+"Graphite, natural",Concentration,diesel,0.0032452312340364793
+"Graphite, natural",Concentration,"nitric acid, without water, in 50% solution state",0.0
+"Graphite, natural",Concentration,hydrogen fluoride,0.0
+"Graphite, natural",Concentration,pitch,0.0
+"Graphite, natural",Concentration,"nitrogen, liquid",0.0
+"Graphite, natural",Concentration,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+"Graphite, natural",Concentration,iron sulfate,0.0
+"Graphite, natural",Refining,"neutralising agent, sodium hydroxide-equivalent",0.0
+"Graphite, natural",Refining,"hydrochloric acid, without water, in 30% solution state",0.1697454015801701
+"Graphite, natural",Refining,"soda ash, light",0.0
+"Graphite, natural",Refining,"quicklime, milled, packed",0.0
+"Graphite, natural",Refining,kerosene,0.0
+"Graphite, natural",Refining,sulfuric acid,0.0
+"Graphite, natural",Refining,"sodium hydroxide, without water, in 50% solution state",0.0
+"Graphite, natural",Refining,"quicklime, milled, loose",0.0
+"Graphite, natural",Refining,"hydrogen peroxide, without water, in 50% solution state",0.0
+"Graphite, natural",Refining,"carbon dioxide, liquid",0.0
+"Graphite, natural",Refining,bentonite,0.0
+"Graphite, natural",Refining,sulfur,0.0
+"Graphite, natural",Refining,magnesium oxide,0.0
+"Graphite, natural",Refining,"limestone, crushed, for mill",0.0
+"Graphite, natural",Refining,"lime, hydraulic",0.0
+"Graphite, natural",Refining,"soda ash, dense",0.0
+"Graphite, natural",Refining,ammonium bicarbonate,0.0
+"Graphite, natural",Refining,lime,0.01675877290411883
+"Graphite, natural",Refining,"limestone, crushed, washed",0.0
+"Graphite, natural",Refining,disodium disulphite,0.0
+"Graphite, natural",Refining,diesel,0.0
+"Graphite, natural",Refining,"nitric acid, without water, in 50% solution state",0.34597262894095393
+"Graphite, natural",Refining,hydrogen fluoride,0.2539141374357657
+"Graphite, natural",Refining,pitch,0.03600675937152651
+"Graphite, natural",Refining,"nitrogen, liquid",0.0006566827101747269
+"Graphite, natural",Refining,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+"Graphite, natural",Refining,iron sulfate,0.0
+"Graphite, synthetic",Mining,"neutralising agent, sodium hydroxide-equivalent",0.0
+"Graphite, synthetic",Mining,"hydrochloric acid, without water, in 30% solution state",0.0
+"Graphite, synthetic",Mining,"soda ash, light",0.0
+"Graphite, synthetic",Mining,"quicklime, milled, packed",0.0
+"Graphite, synthetic",Mining,kerosene,0.0
+"Graphite, synthetic",Mining,sulfuric acid,0.0
+"Graphite, synthetic",Mining,"sodium hydroxide, without water, in 50% solution state",0.0
+"Graphite, synthetic",Mining,"quicklime, milled, loose",0.0
+"Graphite, synthetic",Mining,"hydrogen peroxide, without water, in 50% solution state",0.0
+"Graphite, synthetic",Mining,"carbon dioxide, liquid",0.0
+"Graphite, synthetic",Mining,bentonite,0.0
+"Graphite, synthetic",Mining,sulfur,0.0
+"Graphite, synthetic",Mining,magnesium oxide,0.0
+"Graphite, synthetic",Mining,"limestone, crushed, for mill",0.0
+"Graphite, synthetic",Mining,"lime, hydraulic",0.0
+"Graphite, synthetic",Mining,"soda ash, dense",0.0
+"Graphite, synthetic",Mining,ammonium bicarbonate,0.0
+"Graphite, synthetic",Mining,lime,0.0
+"Graphite, synthetic",Mining,"limestone, crushed, washed",0.0
+"Graphite, synthetic",Mining,disodium disulphite,0.0
+"Graphite, synthetic",Mining,diesel,0.0
+"Graphite, synthetic",Mining,"nitric acid, without water, in 50% solution state",0.0
+"Graphite, synthetic",Mining,hydrogen fluoride,0.0
+"Graphite, synthetic",Mining,pitch,0.0
+"Graphite, synthetic",Mining,"nitrogen, liquid",0.0
+"Graphite, synthetic",Mining,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+"Graphite, synthetic",Mining,iron sulfate,0.0
+"Graphite, synthetic",Concentration,"neutralising agent, sodium hydroxide-equivalent",0.0
+"Graphite, synthetic",Concentration,"hydrochloric acid, without water, in 30% solution state",0.0
+"Graphite, synthetic",Concentration,"soda ash, light",0.0
+"Graphite, synthetic",Concentration,"quicklime, milled, packed",0.0
+"Graphite, synthetic",Concentration,kerosene,0.0
+"Graphite, synthetic",Concentration,sulfuric acid,0.0
+"Graphite, synthetic",Concentration,"sodium hydroxide, without water, in 50% solution state",0.0004945349808084669
+"Graphite, synthetic",Concentration,"quicklime, milled, loose",0.0
+"Graphite, synthetic",Concentration,"hydrogen peroxide, without water, in 50% solution state",0.0
+"Graphite, synthetic",Concentration,"carbon dioxide, liquid",0.0
+"Graphite, synthetic",Concentration,bentonite,0.0
+"Graphite, synthetic",Concentration,sulfur,0.0
+"Graphite, synthetic",Concentration,magnesium oxide,0.0
+"Graphite, synthetic",Concentration,"limestone, crushed, for mill",0.0
+"Graphite, synthetic",Concentration,"lime, hydraulic",0.0
+"Graphite, synthetic",Concentration,"soda ash, dense",0.0
+"Graphite, synthetic",Concentration,ammonium bicarbonate,0.0
+"Graphite, synthetic",Concentration,lime,0.0
+"Graphite, synthetic",Concentration,"limestone, crushed, washed",0.0
+"Graphite, synthetic",Concentration,disodium disulphite,0.0
+"Graphite, synthetic",Concentration,diesel,0.0
+"Graphite, synthetic",Concentration,"nitric acid, without water, in 50% solution state",0.0
+"Graphite, synthetic",Concentration,hydrogen fluoride,0.0
+"Graphite, synthetic",Concentration,pitch,0.0
+"Graphite, synthetic",Concentration,"nitrogen, liquid",0.0
+"Graphite, synthetic",Concentration,"phosphoric acid, fertiliser grade, without water, in 70% solution state",2.326486471735306e-05
+"Graphite, synthetic",Concentration,iron sulfate,3.9159549104615936e-06
+"Graphite, synthetic",Refining,"neutralising agent, sodium hydroxide-equivalent",0.0
+"Graphite, synthetic",Refining,"hydrochloric acid, without water, in 30% solution state",0.0
+"Graphite, synthetic",Refining,"soda ash, light",0.0
+"Graphite, synthetic",Refining,"quicklime, milled, packed",0.0
+"Graphite, synthetic",Refining,kerosene,0.0
+"Graphite, synthetic",Refining,sulfuric acid,0.0
+"Graphite, synthetic",Refining,"sodium hydroxide, without water, in 50% solution state",0.0
+"Graphite, synthetic",Refining,"quicklime, milled, loose",0.0
+"Graphite, synthetic",Refining,"hydrogen peroxide, without water, in 50% solution state",0.0
+"Graphite, synthetic",Refining,"carbon dioxide, liquid",0.0
+"Graphite, synthetic",Refining,bentonite,0.0
+"Graphite, synthetic",Refining,sulfur,0.0
+"Graphite, synthetic",Refining,magnesium oxide,0.0
+"Graphite, synthetic",Refining,"limestone, crushed, for mill",0.0
+"Graphite, synthetic",Refining,"lime, hydraulic",0.0
+"Graphite, synthetic",Refining,"soda ash, dense",0.0
+"Graphite, synthetic",Refining,ammonium bicarbonate,0.0
+"Graphite, synthetic",Refining,lime,0.0
+"Graphite, synthetic",Refining,"limestone, crushed, washed",0.0
+"Graphite, synthetic",Refining,disodium disulphite,0.0
+"Graphite, synthetic",Refining,diesel,0.0
+"Graphite, synthetic",Refining,"nitric acid, without water, in 50% solution state",0.0
+"Graphite, synthetic",Refining,hydrogen fluoride,0.0
+"Graphite, synthetic",Refining,pitch,0.0
+"Graphite, synthetic",Refining,"nitrogen, liquid",0.0
+"Graphite, synthetic",Refining,"phosphoric acid, fertiliser grade, without water, in 70% solution state",0.0
+"Graphite, synthetic",Refining,iron sulfate,0.0
