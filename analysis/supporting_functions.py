@@ -9,16 +9,6 @@ from constructive_geometries import *
 import yaml
 import copy
 import brightway2 as bw
-import presamples as ps
-import geopandas as gpd
-import pycountry
-
-
-def get_db_as_dict(source_db: str):
-    """
-    Import the ecoinvent/biosphere database into a dictionary format
-    """
-    return [ds.as_dict() for ds in bw.Database(source_db)]
 
 
 def get_breakdown_lists():
@@ -45,6 +35,45 @@ def correct_product_in_exchanges(db):
         for exc in ds["exchanges"]:
             if 'reference product' in exc:
                 exc['product'] = exc.pop('reference product')
+
+
+def link_exchanges_by_code(db, external_db, biosphere_db):
+    '''
+    This function links in place technosphere exchanges within the database and/or to an external database
+    and biosphere exchanges with the biosphere database (only unlinked exchanges)
+    
+    Returns a dictionary with the linked database
+    '''   
+    technosphere = lambda x: x["type"] == "technosphere"
+    biosphere = lambda x: x["type"] == "biosphere"
+    
+    for ds in db:
+        
+        for exc in filter(technosphere, ds["exchanges"]):
+            if 'input' not in exc:
+                try:
+                    exc_lci = wurst.get_one(db + external_db,
+                                            wurst.equals("name", exc['name']),
+                                            wurst.equals("reference product", exc['product']),
+                                            wurst.equals("location", exc['location'])
+                                        )
+                    exc.update({'input': (exc_lci['database'],
+                                        exc_lci['code'])})
+                except Exception:
+                    print(exc['name'], exc['product'], exc['location'])
+                    raise
+            
+        for exc in filter(biosphere, ds["exchanges"]):
+            if 'input' not in exc:
+                try:
+                    ef_code = [ef['code'] for ef in biosphere_db if ef['name'] == exc['name'] and 
+                                                                    ef['unit'] == exc['unit'] and 
+                                                                    ef['categories'] == exc['categories']][0]
+                    exc.update({'input': ('biosphere3',
+                                          ef_code)})   
+                except Exception:
+                    print(exc['name'], exc['unit'], exc['categories'])
+                    raise
 
 
 def replicate_activity_to_location(ds, loc, db, DB_NAME):
@@ -109,6 +138,10 @@ def get_dataset_for_location(exc_filter, loc, db):
     if len(match_dataset) == 0:
         # If there is no specific dataset for the location, search for the supraregional locations
         loc_intersection = geomatcher.intersects(loc, biggest_first=False)
+        
+        # There are no regions intersecting with "RoW"; check for "RoW" or "GLO datasets"
+        if len(loc_intersection) == 0:
+            loc_intersection = ["RoW", "GLO"]
             
         for loc in [i[1] if type(i)==tuple else i for i in loc_intersection]:
             match_dataset = [ds for ds in possible_datasets if ds['location'] == loc]
@@ -216,109 +249,8 @@ def lcia_direct_emissions(activity, lcia_methods, amount=1):
         for impact in lcia_methods:
             if exc_key in method_CFs[impact]:
                 emissions_impact[impact] += exc_amount * method_CFs[impact][exc_key]
+
     return emissions_impact
-
-
-def lcia_heating_and_fuel(activity, lcia_methods, amount=1):
-
-    fuels_list = [
-        "natural gas, high pressure",
-        "diesel",
-        "hard coal",
-        "light fuel oil"
-    ]
-
-    impacts_heating_and_fuel = {
-        impact: {"Direct emissions": 0,
-                 "Electricity": 0,
-                 "Fuel": 0,
-                 "Other": 0}
-                 for impact in lcia_methods
-                }
-
-    # Direct emissons from assessed activity
-    multi_lcia_results = lcia_direct_emissions(activity, lcia_methods, amount)
-    for impact in multi_lcia_results:
-        impacts_heating_and_fuel[impact]["Direct emissions"] += multi_lcia_results[impact]
-
-    # ***********************************************
-    if activity["reference product"] == "heat, from steam, in chemical industry":
-
-        for exc in activity.technosphere():
-            exc_amount = amount * exc['amount']
-
-            if "heat, district or industrial" in exc.input["reference product"]:
-                  
-                # Direct emissions from each heat activity
-                multi_lcia_results = lcia_direct_emissions(exc.input, lcia_methods, exc_amount)
-                for impact in multi_lcia_results:
-                    impacts_heating_and_fuel[impact]["Direct emissions"] += multi_lcia_results[impact]
-
-                # Emissions from inputs for each heat activity
-                for eee in exc.input.technosphere():
-                    eee_amount = exc_amount * eee['amount']
-                    multi_lcia_results = multi_lcia(eee.input, lcia_methods, eee_amount)
-
-                    # Electricity
-                    if eee.input['reference product'] in ['electricity, low voltage', "electricity, medium voltage", "electricity, high voltage"]:
-                        for impact in multi_lcia_results:
-                            impacts_heating_and_fuel[impact]["Electricity"] += multi_lcia_results[impact]
-
-                    # Fuel
-                    elif eee.input['reference product'] in fuels_list:
-                        for impact in multi_lcia_results:
-                            impacts_heating_and_fuel[impact]["Fuel"] += multi_lcia_results[impact]
-
-                    # Other
-                    else:
-                        for impact in multi_lcia_results:
-                            impacts_heating_and_fuel[impact]["Other"] += multi_lcia_results[impact]
-
-            # Emissions from non heat activities
-            else:
-                multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
-
-                # Electricity
-                if exc.input['reference product'] in ['electricity, low voltage', "electricity, medium voltage", "electricity, high voltage"]:
-                    for impact in multi_lcia_results:
-                        impacts_heating_and_fuel[impact]["Electricity"] += multi_lcia_results[impact]
-
-                # Fuel
-                elif exc.input['reference product'] in fuels_list:
-                    for impact in multi_lcia_results:
-                        impacts_heating_and_fuel[impact]["Fuel"] += multi_lcia_results[impact]
-
-                # Other
-                else:
-                    for impact in multi_lcia_results:
-                        impacts_heating_and_fuel[impact]["Other"] += multi_lcia_results[impact]
-
-    # ***********************************************
-    else:
-    
-        # Impact from inputs:
-        for exc in activity.technosphere():
-            exc_amount = amount * exc['amount']
-            multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
-
-            # Electricity
-            if exc.input['reference product'] in ['electricity, low voltage',
-                                                "electricity, medium voltage",
-                                                "electricity, high voltage"]:
-                for impact in multi_lcia_results:
-                    impacts_heating_and_fuel[impact]["Electricity"] += multi_lcia_results[impact]
-
-            # Fuel
-            elif exc.input['reference product'] in fuels_list:
-                for impact in multi_lcia_results:
-                    impacts_heating_and_fuel[impact]["Fuel"] += multi_lcia_results[impact]
-
-            # Other
-            else:
-                for impact in multi_lcia_results:
-                    impacts_heating_and_fuel[impact]["Other"] += multi_lcia_results[impact]
-
-    return impacts_heating_and_fuel
 
 
 def lcia_system_contribution(activity, skip_inventories, lcia_methods, CONTRIBUTORS_LIST, breakdown_lists, activity_amount=1):
@@ -348,9 +280,34 @@ def lcia_system_contribution(activity, skip_inventories, lcia_methods, CONTRIBUT
     # Contribution of each system component
    
     # Process emissions
-    process_emissions_impact = lcia_direct_emissions(activity, lcia_methods, amount=1)    
+    process_emissions_impact = lcia_direct_emissions(activity, lcia_methods, activity_amount)    
     for impact in process_emissions_impact:
-        system_contributions[impact]['Direct emissions, process'] += process_emissions_impact[impact]
+
+        # Nickel datasets require some special treatment:
+
+        # For the nickel mining dataset,
+        # direct emissions are attributed to "Fuels consumption":
+        if activity["name"] == "nickel ore mining, average excluding China":
+            system_contributions[impact]['Fuels consumption'] += process_emissions_impact[impact]
+        
+        # For nickel concentration dataset,
+        # 15% of direct emissions are attributed to "Fuels consumption"
+        # and 85% to "Process emissions" as these are emissions from the use of flotation agents containing C
+        elif activity["name"] == "nickel concentration, average excluding China":
+            system_contributions[impact]['Fuels consumption'] += process_emissions_impact[impact] * 0.15
+            system_contributions[impact]['Process emissions'] += process_emissions_impact[impact] * 0.85
+    
+        # For nickel matte production,
+        # 3% of direct emissions are attributed to "Fuels consumption"
+        # and 97% to "Process emissions"
+        elif activity["name"] == "nickel matte production, nickel-cobalt sulphite and nickel sub materials, mass allocation":
+            system_contributions[impact]['Fuels consumption'] += process_emissions_impact[impact] * 0.03
+            system_contributions[impact]['Process emissions'] += process_emissions_impact[impact] * 0.97            
+        
+        # For nickel sulfate production, all direct emissions are process emissions
+
+        else:
+            system_contributions[impact]['Process emissions'] += process_emissions_impact[impact]
 
     for exc in activity.technosphere():
         
@@ -360,44 +317,38 @@ def lcia_system_contribution(activity, skip_inventories, lcia_methods, CONTRIBUT
         else:
             exc_amount = activity_amount * exc['amount']
 
-            # Heating emissions
-            if exc.input['reference product'] in breakdown_lists["heating products"]:
-                heating_impacts = lcia_heating_and_fuel(exc.input, lcia_methods, exc_amount)
-                for impact in heating_impacts:
-                    system_contributions[impact]['Direct emissions, heat'] += heating_impacts[impact]["Direct emissions"]
-                    system_contributions[impact]['Electricity consumption'] += heating_impacts[impact]["Electricity"]
-                    system_contributions[impact]['Fuels consumption'] += heating_impacts[impact]["Fuel"]
-                    system_contributions[impact]['Other'] += heating_impacts[impact]["Other"]
-
-            # Fuels emissions
-            elif exc.input['reference product'] in breakdown_lists["fuel products"]:
-                fuel_impacts = lcia_heating_and_fuel(exc.input, lcia_methods, exc_amount)
-                for impact in fuel_impacts:
-                    system_contributions[impact]['Direct emissions, fuels'] += fuel_impacts[impact]["Direct emissions"]
-                    system_contributions[impact]['Electricity consumption'] += fuel_impacts[impact]["Electricity"]
-                    system_contributions[impact]['Fuels consumption'] += fuel_impacts[impact]["Fuel"]
-                    system_contributions[impact]['Other'] += fuel_impacts[impact]["Other"]
-
-            # Electricity
-            elif exc.input['reference product'] in ['electricity, low voltage',
-                                                "electricity, medium voltage",
-                                                "electricity, high voltage",
-                                                "diesel, burned in diesel-electric generating set, 10MW"]:
+            # Electricity consumption
+            if exc.input['reference product'] in ['electricity, low voltage',
+                                                  "electricity, medium voltage",
+                                                  "electricity, high voltage",
+                                                  "diesel, burned in diesel-electric generating set, 10MW"]:
                 multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
                 for impact in multi_lcia_results:
                     system_contributions[impact]['Electricity consumption'] += multi_lcia_results[impact]
-            
-            # Reagents
+                
+            # Process heating emissions
+            elif exc.input['reference product'] in breakdown_lists["heating products"]:
+                multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
+                for impact in multi_lcia_results:
+                    system_contributions[impact]['Process heating'] += multi_lcia_results[impact]            
+
+            # Fuels consumption
+            elif exc.input['reference product'] in breakdown_lists["fuel products"]:
+                multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
+                for impact in multi_lcia_results:
+                    system_contributions[impact]['Fuels consumption'] += multi_lcia_results[impact]  
+
+            # Reagents consumption
             elif exc.input['reference product'] in breakdown_lists["reagent products"]:        
                 multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
                 for impact in multi_lcia_results:
-                    system_contributions[impact]['Reagents consumption'] += multi_lcia_results[impact]      
+                    system_contributions[impact]['Reagents consumption'] += multi_lcia_results[impact]    
 
             # Other activities
             else:       
                 multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
                 for impact in multi_lcia_results:
-                    system_contributions[impact]['Other'] += multi_lcia_results[impact]            
+                    system_contributions[impact]['Other'] += multi_lcia_results[impact]   
 
     return system_contributions
 
@@ -425,7 +376,7 @@ def lcia_reagents_disaggregation(activity, skip_inventories, lcia_methods, break
             if exc.input['reference product'] in breakdown_lists["reagent products"]:        
                 multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
                 for impact in multi_lcia_results:
-                    reagents_contributions[impact][exc.input['reference product']] = multi_lcia_results[impact]      
+                    reagents_contributions[impact][exc.input['reference product']] += multi_lcia_results[impact]      
      
 
     return reagents_contributions

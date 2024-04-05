@@ -4,9 +4,12 @@ heating products:
   - heat, central or small-scale, natural gas
   - heat, central or small-scale, other than natural gas
   - heat, from steam, in chemical industry
+  - heat, from steam
 
 fuel products:
   - diesel, burned in building machine
+  - diesel
+  - petrol
   - machine operation, diesel, >= 74.57 kW, high load factor
 
 reagent products:
@@ -14,15 +17,12 @@ reagent products:
   - hydrochloric acid, without water, in 30% solution state
   - soda ash, light
   - quicklime, milled, packed
-  - kerosene
-      
   - sulfuric acid
   - sodium hydroxide, without water, in 50% solution state
   - quicklime, milled, loose
   - hydrogen peroxide, without water, in 50% solution state
   - carbon dioxide, liquid
   - bentonite
-
   - sulfur
   - magnesium oxide
   - limestone, crushed, for mill
@@ -32,12 +32,24 @@ reagent products:
   - lime
   - limestone, crushed, washed
   - disodium disulphite
-
-  - diesel
   - nitric acid, without water, in 50% solution state
   - hydrogen fluoride
-  - pitch
   - nitrogen, liquid
-
   - phosphoric acid, fertiliser grade, without water, in 70% solution state
   - iron sulfate
+  - aluminium sulfate, powder
+  - chlorine, liquid
+  - chlorine, gaseous
+  - iron (III) chloride, without water, in 40% solution state
+  - lime, hydrated, packed
+  - sodium hydrogen sulfite
+  - sodium pyrophosphate
+  - ammonia, anhydrous, liquid
+  - hydrogen sulfide
+  - oxygen, liquid
+  - formaldehyde
+  - hydrogen, gaseous, medium pressure, merchant
+  - naphthalene sulfonic acid
+  - sodium chloride, powder
+  - sodium sulfate, anhydrite
+  - sulfur dioxide, liquid

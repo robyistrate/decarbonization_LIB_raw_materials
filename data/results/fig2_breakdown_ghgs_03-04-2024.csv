@@ -1,0 +1,91 @@
+Metal,Stage,Source,Value
+Cobalt,Mining,Electricity consumption,0.0
+Cobalt,Mining,Process heating,0.0
+Cobalt,Mining,Fuels consumption,2.9586509879922676
+Cobalt,Mining,Reagents consumption,0.0
+Cobalt,Mining,Process emissions,0.0
+Cobalt,Mining,Other,0.0
+Cobalt,Concentration,Electricity consumption,0.10569034334533316
+Cobalt,Concentration,Process heating,0.0
+Cobalt,Concentration,Fuels consumption,0.0
+Cobalt,Concentration,Reagents consumption,1.9145332795658239
+Cobalt,Concentration,Process emissions,0.0
+Cobalt,Concentration,Other,0.5574076635371723
+Cobalt,Refining,Electricity consumption,1.1419300100370895
+Cobalt,Refining,Process heating,0.8506169366008153
+Cobalt,Refining,Fuels consumption,0.0
+Cobalt,Refining,Reagents consumption,7.372105271525215
+Cobalt,Refining,Process emissions,0.0
+Cobalt,Refining,Other,0.08996284977878952
+"Lithium, brine",Mining,Electricity consumption,0.005733767657414057
+"Lithium, brine",Mining,Process heating,0.0
+"Lithium, brine",Mining,Fuels consumption,0.10177180748597327
+"Lithium, brine",Mining,Reagents consumption,0.0
+"Lithium, brine",Mining,Process emissions,0.0
+"Lithium, brine",Mining,Other,0.10160173166112979
+"Lithium, brine",Concentration,Electricity consumption,0.015286063971971577
+"Lithium, brine",Concentration,Process heating,0.009188232089818036
+"Lithium, brine",Concentration,Fuels consumption,0.0
+"Lithium, brine",Concentration,Reagents consumption,0.3835829209446551
+"Lithium, brine",Concentration,Process emissions,0.0
+"Lithium, brine",Concentration,Other,0.16053267738903246
+"Lithium, brine",Refining,Electricity consumption,1.028197775699359
+"Lithium, brine",Refining,Process heating,3.2377432235743626
+"Lithium, brine",Refining,Fuels consumption,0.3045383510327291
+"Lithium, brine",Refining,Reagents consumption,2.354007537459906
+"Lithium, brine",Refining,Process emissions,0.0
+"Lithium, brine",Refining,Other,6.462112078612921e-07
+"Lithium, spodumene",Mining,Electricity consumption,0.0
+"Lithium, spodumene",Mining,Process heating,0.0
+"Lithium, spodumene",Mining,Fuels consumption,0.0
+"Lithium, spodumene",Mining,Reagents consumption,0.0
+"Lithium, spodumene",Mining,Process emissions,0.0
+"Lithium, spodumene",Mining,Other,0.0
+"Lithium, spodumene",Concentration,Electricity consumption,0.05851133631813081
+"Lithium, spodumene",Concentration,Process heating,0.08320201818134014
+"Lithium, spodumene",Concentration,Fuels consumption,0.01661865781592422
+"Lithium, spodumene",Concentration,Reagents consumption,0.0
+"Lithium, spodumene",Concentration,Process emissions,0.0
+"Lithium, spodumene",Concentration,Other,0.8093948332405712
+"Lithium, spodumene",Refining,Electricity consumption,3.330629195912683
+"Lithium, spodumene",Refining,Process heating,9.875524167352356
+"Lithium, spodumene",Refining,Fuels consumption,0.0
+"Lithium, spodumene",Refining,Reagents consumption,2.776898301849248
+"Lithium, spodumene",Refining,Process emissions,0.0
+"Lithium, spodumene",Refining,Other,0.28654415015773604
+Nickel,Mining,Electricity consumption,0.2009699660625666
+Nickel,Mining,Process heating,1.891179506780751e-06
+Nickel,Mining,Fuels consumption,0.08537038122646791
+Nickel,Mining,Reagents consumption,0.0
+Nickel,Mining,Process emissions,0.0
+Nickel,Mining,Other,0.04846086525598826
+Nickel,Concentration,Electricity consumption,0.38342954051024325
+Nickel,Concentration,Process heating,0.036825760296193985
+Nickel,Concentration,Fuels consumption,0.006366986030046116
+Nickel,Concentration,Reagents consumption,0.017433574183711168
+Nickel,Concentration,Process emissions,0.028558620178816
+Nickel,Concentration,Other,0.02514818628343556
+Nickel,Refining,Electricity consumption,1.693323069295765
+Nickel,Refining,Process heating,0.9808247128140615
+Nickel,Refining,Fuels consumption,0.03568497244707753
+Nickel,Refining,Reagents consumption,0.32555658713582414
+Nickel,Refining,Process emissions,1.2685955233328001
+Nickel,Refining,Other,0.34251448617349156
+"Graphite, natural",Mining,Electricity consumption,0.20116336505095564
+"Graphite, natural",Mining,Process heating,0.0
+"Graphite, natural",Mining,Fuels consumption,0.23989639518539002
+"Graphite, natural",Mining,Reagents consumption,0.0
+"Graphite, natural",Mining,Process emissions,0.0
+"Graphite, natural",Mining,Other,0.027693826928839763
+"Graphite, natural",Concentration,Electricity consumption,1.2200048268152375
+"Graphite, natural",Concentration,Process heating,0.506791622658189
+"Graphite, natural",Concentration,Fuels consumption,0.0111178957333518
+"Graphite, natural",Concentration,Reagents consumption,0.0
+"Graphite, natural",Concentration,Process emissions,0.0
+"Graphite, natural",Concentration,Other,0.09905154162594125
+"Graphite, natural",Refining,Electricity consumption,6.903709165176883
+"Graphite, natural",Refining,Process heating,0.08001704653708043
+"Graphite, natural",Refining,Fuels consumption,0.004291678318791357
+"Graphite, natural",Refining,Reagents consumption,0.8474724566069045
+"Graphite, natural",Refining,Process emissions,0.062407
+"Graphite, natural",Refining,Other,0.3568722614303241
