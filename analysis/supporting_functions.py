@@ -9,6 +9,7 @@ from constructive_geometries import *
 import yaml
 import copy
 import brightway2 as bw
+import math
 
 
 def get_breakdown_lists():
@@ -208,11 +209,202 @@ def relink_exchange_location(ds, db):
     return ds
 
 
-def multi_lcia(activity, lcia_methods, amount=1):
+def create_renewable_electricity_country_market(renewable_tech, countries, dbs, db_name):
+    """
+    This function creates country markets for renewable power generation technologies
+    for those countries that have additional regionalization
+    """
+    technosphere = lambda x: x["type"] == "technosphere"
+    renewable_tech_country_markets = []
+
+    for c in countries:
+
+        # Create market activity for country
+        actv_dict = {
+            "name": "market for " + renewable_tech,
+            "reference product": "electricity, high voltage",
+            "location": c,
+            "unit": "kilowatt hour",
+            "database": db_name,
+            "code": wurst.filesystem.get_uuid()
+        }
+        
+        exchanges = []
+
+        # Add production to exchanges
+        exchanges.append({
+            'name': actv_dict["name"],
+            'product': actv_dict['reference product'],
+            "location": actv_dict['location'],
+            'amount': 1,
+            'unit': actv_dict['unit'],
+            'database': actv_dict['database'],
+            'type': "production"
+            })
+                    
+        # Get market for electricity high voltage in the country
+        elec_market_country = wurst.get_one(
+            dbs,
+            wurst.equals("name", "market group for electricity, high voltage"),
+            wurst.equals("reference product", "electricity, high voltage"),
+            wurst.equals("location", c)
+            )
+
+        # Iterate over regional markets within the country
+        # and get market share for the region and associated dataset
+        for reg_elec in elec_market_country["exchanges"]:
+            elec_market_reg = wurst.get_one(
+                dbs,
+                wurst.equals("name", reg_elec["name"]),
+                wurst.equals("reference product", reg_elec["product"]),
+                wurst.equals("location", reg_elec["location"])
+                )
+            
+            # Some markets have a second layer of regionalized markets
+            if reg_elec["name"] == "market group for electricity, high voltage":
+                for reg_elec_second in elec_market_reg["exchanges"]:
+                    elec_market_reg_second = wurst.get_one(
+                        dbs,
+                        wurst.equals("name", reg_elec_second["name"]),
+                        wurst.equals("reference product", reg_elec_second["product"]),
+                        wurst.equals("location", reg_elec_second["location"])
+                        )
+                    
+                    # Iterate over power generation technologies within
+                    # each reginoal market
+                    for tech_elec in elec_market_reg_second["exchanges"]:
+                        if tech_elec["name"] == renewable_tech:
+                            elec_share_tech = tech_elec["amount"] * reg_elec_second["amount"] * reg_elec["amount"]
+
+                            exchanges.append({'name': tech_elec["name"],
+                                            'product': tech_elec['product'],
+                                            'amount': elec_share_tech,
+                                            'unit': tech_elec['unit'],
+                                            'database': tech_elec['database'],
+                                            'location': tech_elec['location'],
+                                            'type': tech_elec['type'],
+                                            })
+
+            # Other markets do not have further layers   
+            # Iterate over power generation technologies within
+            # each reginoal market
+            for tech_elec in elec_market_reg["exchanges"]:
+                
+                if tech_elec["name"] == renewable_tech:
+                    elec_share_tech = tech_elec["amount"] * reg_elec["amount"]
+
+                    exchanges.append({'name': tech_elec["name"],
+                                      'product': tech_elec['product'],
+                                      'amount': elec_share_tech,
+                                      'unit': tech_elec['unit'],
+                                      'database': tech_elec['database'],
+                                      'location': tech_elec['location'],
+                                      'type': tech_elec['type']
+                                      }) 
+                    
+        actv_dict.update({'exchanges': exchanges})
+        renewable_tech_country_markets.append(actv_dict)
+
+    # Normalize market shares:
+    for country in renewable_tech_country_markets:
+        # Get sum of technology shares
+        sum_tech_shares = 0
+        for exc in filter(technosphere, country["exchanges"]):
+            sum_tech_shares += exc["amount"]
+        
+        # Normalize:
+        for exc in filter(technosphere, country["exchanges"]):
+            exc.update({
+                "amount": exc["amount"] / sum_tech_shares
+            })
+
+    # Link exchanges:
+    link_exchanges_by_code(renewable_tech_country_markets, dbs, [])
+
+    return renewable_tech_country_markets
+
+
+def create_pedigree_matrix(pedigree_scores: tuple, exc_amount: float):
+    """
+    This function returns a dict containing the pedigree matrix dict and loc and scale values
+    that can be used to update exchanges in a dataset dict
+    
+    The pedigree matrix dictionary is created using the scores provided in the LCI Excel file.
+
+    The code to calcualte the loc and scale values is based on https://github.com/brightway-lca/pedigree_matrix,
+    which is published by Chris Mutel under an BSD 3-Clause License (2021).
+
+    
+    :param pedigree_scores: tuple of pedigree scores
+    :param exc_amount: exchange amount
+    :return dict:
+    """
+
+    VERSION_2 = {
+        "reliability": (1.0, 1.54, 1.61, 1.69, 1.69),
+        "completeness": (1.0, 1.03, 1.04, 1.08, 1.08),
+        "temporal correlation": (1.0, 1.03, 1.1, 1.19, 1.29),
+        "geographical correlation": (1.0, 1.04, 1.08, 1.11, 1.11),
+        "further technological correlation": (1.0, 1.18, 1.65, 2.08, 2.8),
+        "sample size": (1.0, 1.0, 1.0, 1.0, 1.0),
+    }
+    
+    pedigree_scores_dict = {
+        'reliability': pedigree_scores[0],
+        'completeness': pedigree_scores[1],
+        'temporal correlation': pedigree_scores[2],
+        'geographical correlation': pedigree_scores[3],
+        'further technological correlation': pedigree_scores[4]
+    }
+    
+    assert len(pedigree_scores) in (5, 6), "Must provide either 5 or 6 factors"
+    if len(pedigree_scores) == 5:
+        pedigree_scores = pedigree_scores + (1,)
+
+    factors = [VERSION_2[key][index - 1] for key, index in pedigree_scores_dict.items()]
+
+    basic_uncertainty: float = 1.0
+    values = [basic_uncertainty] + factors
+
+    scale = math.sqrt(sum([math.log(x) ** 2 for x in values])) / 2
+    loc = math.log(abs(exc_amount))
+
+    pedigree_dict = {
+        'uncertainty type': 2,
+        'loc': loc,
+        'scale': scale,
+        "pedigree": pedigree_scores_dict,
+    }
+    return pedigree_dict
+
+
+def init_simple_lca(activity):
+    """
+    Initialize simple LCA object
+    """
+    lca = bw.LCA({activity.key: 1})
+    lca.lci()
+    return lca
+
+
+def init_mc_lca(activity):
+    """
+    Initialize Monte Carlo LCA object
+
+    Create a MonteCarloLCA object with functional unit but no method. 
+    Run .lci to build the A and B matrices (and hence fix the indices of our matrices)
+    """
+    mc_lca = bw.MonteCarloLCA({activity: 1})
+    mc_lca.lci()
+    return mc_lca
+
+
+def multi_lcia(lca, activity, lcia_methods, amount=1):
     """
     Calculate multiple impact categories.
     
     Parameters:
+    - lca: lca object
     - activity (object): An activity object representing the product or process being assessed.
     - lcia_methods (dict): A dictionary of impact categories and their corresponding method. 
                            The keys are the names of the impact categories and the values are the methods to be used for each category.
@@ -222,14 +414,50 @@ def multi_lcia(activity, lcia_methods, amount=1):
     - multi_lcia_results (dict): A dictionary of impact categories and their corresponding scores.
                                  The keys are the names of the impact categories and the values are the scores.
     """
-    lca = bw.LCA({activity.key: amount})
-    lca.lci()
+
     results = dict()
+    lca.redo_lci({activity.key: amount})
+
     for impact in lcia_methods:
         lca.switch_method(lcia_methods[impact])
         lca.lcia()
         results[impact] = lca.score
     return results
+
+def multi_lcia_MonteCarlo(mc_lca, activity, iterations, lcia_methods, amount=1):
+    '''
+    This function performs Monte Carlo simulation accross a range of categories
+
+    :param activity: dataset of the activity for analysis
+    :param iterations: number of Monte Carlo runs
+    :param lcia_methods: dictionary containing assessed impact categories and methods
+    '''
+
+    mc_lca.redo_lci({activity.key: amount})
+    
+    # Iterate over the methods and stores the C matrix in a dictionary
+    C_matrices = dict()
+    for method in lcia_methods:
+        mc_lca.switch_method(lcia_methods[method])
+        C_matrices[method] = mc_lca.characterization_matrix
+        
+    # Create a dictionary to store the results
+    results_MC = np.empty((len(lcia_methods), iterations))
+   
+    # Populate results dictionary using a for loop over the number of MonteCarlo iterations required 
+    # Include a nested for loop over the methods and multiply the characterization matrix with the inventory.       
+    for iteration in range(iterations):
+        next(mc_lca)
+        for method_index, method in enumerate(lcia_methods):
+            results_MC[method_index, iteration] = (C_matrices[method] * mc_lca.inventory).sum()
+       
+    results_MC_dict = dict()
+    i_count = 0
+    for method in lcia_methods:
+        results_MC_dict[method] = results_MC[i_count]
+        i_count += 1
+
+    return results_MC_dict
 
 
 def lcia_direct_emissions(activity, lcia_methods, amount=1):
@@ -253,7 +481,7 @@ def lcia_direct_emissions(activity, lcia_methods, amount=1):
     return emissions_impact
 
 
-def lcia_system_contribution(activity, skip_inventories, lcia_methods, CONTRIBUTORS_LIST, breakdown_lists, activity_amount=1):
+def lcia_system_contribution(lca, activity, skip_inventories, lcia_methods, CONTRIBUTORS_LIST, breakdown_lists, activity_amount=1):
     '''
     This function computes the contribution of each system component to the total impact
     Based on: https://github.com/brightway-lca/brightway2/blob/master/notebooks/Contribution%20analysis%20and%20comparison.ipynb
@@ -318,42 +546,39 @@ def lcia_system_contribution(activity, skip_inventories, lcia_methods, CONTRIBUT
             exc_amount = activity_amount * exc['amount']
 
             # Electricity consumption
-            if exc.input['reference product'] in ['electricity, low voltage',
-                                                  "electricity, medium voltage",
-                                                  "electricity, high voltage",
-                                                  "diesel, burned in diesel-electric generating set, 10MW"]:
-                multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
+            if exc.input['reference product'] in breakdown_lists["electricity products"]:
+                multi_lcia_results = multi_lcia(lca, exc.input, lcia_methods, exc_amount)
                 for impact in multi_lcia_results:
                     system_contributions[impact]['Electricity consumption'] += multi_lcia_results[impact]
                 
             # Process heating emissions
             elif exc.input['reference product'] in breakdown_lists["heating products"]:
-                multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
+                multi_lcia_results = multi_lcia(lca, exc.input, lcia_methods, exc_amount)
                 for impact in multi_lcia_results:
                     system_contributions[impact]['Process heating'] += multi_lcia_results[impact]            
 
             # Fuels consumption
             elif exc.input['reference product'] in breakdown_lists["fuel products"]:
-                multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
+                multi_lcia_results = multi_lcia(lca, exc.input, lcia_methods, exc_amount)
                 for impact in multi_lcia_results:
                     system_contributions[impact]['Fuels consumption'] += multi_lcia_results[impact]  
 
             # Reagents consumption
             elif exc.input['reference product'] in breakdown_lists["reagent products"]:        
-                multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
+                multi_lcia_results = multi_lcia(lca, exc.input, lcia_methods, exc_amount)
                 for impact in multi_lcia_results:
                     system_contributions[impact]['Reagents consumption'] += multi_lcia_results[impact]    
 
             # Other activities
             else:       
-                multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
+                multi_lcia_results = multi_lcia(lca, exc.input, lcia_methods, exc_amount)
                 for impact in multi_lcia_results:
                     system_contributions[impact]['Other'] += multi_lcia_results[impact]   
 
     return system_contributions
 
 
-def lcia_reagents_disaggregation(activity, skip_inventories, lcia_methods, breakdown_lists, activity_amount=1):
+def lcia_reagents_disaggregation(lca, activity, skip_inventories, lcia_methods, breakdown_lists, activity_amount=1):
     '''
     '''
    
@@ -374,7 +599,7 @@ def lcia_reagents_disaggregation(activity, skip_inventories, lcia_methods, break
             exc_amount = activity_amount * exc['amount']
            
             if exc.input['reference product'] in breakdown_lists["reagent products"]:        
-                multi_lcia_results = multi_lcia(exc.input, lcia_methods, exc_amount)
+                multi_lcia_results = multi_lcia(lca, exc.input, lcia_methods, exc_amount)
                 for impact in multi_lcia_results:
                     reagents_contributions[impact][exc.input['reference product']] += multi_lcia_results[impact]      
      

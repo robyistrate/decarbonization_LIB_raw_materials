@@ -1,3 +1,9 @@
+electricity products:
+  - electricity, low voltage
+  - electricity, medium voltage
+  - electricity, high voltage
+  - diesel, burned in diesel-electric generating set, 10MW
+
 heating products:
   - heat, district or industrial, natural gas
   - heat, district or industrial, other than natural gas
@@ -53,3 +59,4 @@ reagent products:
   - sodium chloride, powder
   - sodium sulfate, anhydrite
   - sulfur dioxide, liquid
+  - coal tar
