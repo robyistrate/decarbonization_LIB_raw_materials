@@ -1,7 +1,7 @@
 # Decarbonizing lithium-ion battery primary raw materials supply chain: Available strategies, mitigation potential and challenges
 
 ## Overview
-Repository to share the data and code associated with the scientific article **Istrate et al. Decarbonizing lithium-ion battery primary raw materials supply chain: Available strategies, mitigation potential and challenges. Joule (2024).**. The repository contains data files and code to import the life cycle inventories (LCIs), reproduce the results, and generate the figures presented in the article.
+Repository to share the data and code associated with the scientific article **Istrate et al. Decarbonizing lithium-ion battery primary raw materials supply chain: Available strategies, mitigation potential and challenges. Joule (2024)**. The repository contains data files and code to import the life cycle inventories (LCIs), reproduce the results, and generate the figures presented in the article.
 
 ## Repository structure
 The data folder includes:
@@ -20,12 +20,14 @@ The notebooks folder includes:
 To ensure the replication of the results presented in the article, please follow this steps:
 
 **1. Set Up the Environment:**
+
 Using Anaconda, build the environment using `environment.yaml`:
 ```
 conda env create -f environment.yml
 ```
 
 **2. Run the notebooks:**
+
 Activate the new environment and run the notebooks in the specified order.
 
 Feel free to reach out if you encounter any issues—I'm happy to help!
