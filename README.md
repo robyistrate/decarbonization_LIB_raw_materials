@@ -28,4 +28,4 @@ conda env create -f environment.yml
 **2. Run the notebooks:**
 Activate the new environment and run the notebooks in the specified order.
 
-Feel free to reach out if you encounter any issues—I'm happy to help!"
+Feel free to reach out if you encounter any issues—I'm happy to help!
