@@ -333,7 +333,6 @@ def create_pedigree_matrix(pedigree_scores: tuple, exc_amount: float):
 
     The code to calcualte the loc and scale values is based on https://github.com/brightway-lca/pedigree_matrix,
     which is published by Chris Mutel under an BSD 3-Clause License (2021).
-
     
     :param pedigree_scores: tuple of pedigree scores
     :param exc_amount: exchange amount
